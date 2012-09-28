@@ -1,6 +1,7 @@
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
 import org.w3c.dom.Document;
+import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
@@ -22,22 +23,16 @@ public class main {
 		  Document doc = dBuilder.parse(xml);
 		  xml.close();
 		   																		*/
-		// /*  
+	//	 /*  
 		File fXmlFile = new File("xml/feed.xml");
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 		Document doc = dBuilder.parse(fXmlFile);
 		doc.getDocumentElement().normalize();
 																				// */
- 
-		//System.out.println("primo nodo: " + doc.getDocumentElement().getNodeName());
-		
-		
-		//System.out.println("secondo nodo: " + doc.getDocumentElement().getFirstChild().getNodeName());
-		
-		
-		
+
 		NodeList nList = doc.getElementsByTagName("bookmaker");
+	
 		System.out.println("-----------------------");
  
 		for (int temp = 0; temp < nList.getLength(); temp++) {
@@ -58,7 +53,15 @@ public class main {
 		      System.out.println("partita: " + ((NodeList) ((NodeList) nNode).item(3)).item(79).getFirstChild().getAttributes().getNamedItem("name").getNodeValue() + "\n");
 		      System.out.println("data: " + ((NodeList) ((NodeList) nNode).item(3)).item(79).getFirstChild().getAttributes().getNamedItem("date").getNodeValue() + "\n");
 		      
-		     
+		      //System.out.println("quotazioni: " + ((Node) ((NodeList) ((NodeList) ((NodeList) nNode).item(3)).item(79)).item(0).getChildNodes().item(3).getAttributes().getNamedItem("name")));
+		      
+		      
+		      System.out.println("1: " + ((Node) ((NodeList) ((NodeList) ((NodeList) ((NodeList) nNode).item(3)).item(79)).item(0).getChildNodes().item(3)).item(0).getAttributes().getNamedItem("odds")));
+		     String uno = ((Node) (NodeList) ((NodeList) ((NodeList) ((NodeList) nNode).item(3)).item(79)).item(0).getChildNodes().item(3)).item(0).getAttributes().getNamedItem("odds");
+		      System.out.println("x: " + ((Node) ((NodeList) ((NodeList) ((NodeList) ((NodeList) nNode).item(3)).item(79)).item(0).getChildNodes().item(3)).item(1).getAttributes().getNamedItem("odds")));
+		      System.out.println("2: " + ((Node) ((NodeList) ((NodeList) ((NodeList) ((NodeList) nNode).item(3)).item(79)).item(0).getChildNodes().item(3)).item(2).getAttributes().getNamedItem("odds")));
+		      
+		    
 
 		     
 		       
